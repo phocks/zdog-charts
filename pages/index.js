@@ -1,55 +1,7 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-import Chart from "../components/zdog";
-
-function mountZdog() {
-  // rotating flag variable
-  let isSpinning = true;
-
-  let illo = new Zdog.Illustration({
-    element: ".zdog-canvas",
-    dragRotate: true,
-    // stop rotation when dragging starts
-    onDragStart: function() {
-      isSpinning = false;
-    }
-  });
-
-  // circle
-  new Zdog.Ellipse({
-    addTo: illo,
-    diameter: 80,
-    // position closer
-    translate: { z: 20 },
-    stroke: 20,
-    color: "#636"
-  });
-
-  // square
-  new Zdog.Rect({
-    addTo: illo,
-    width: 80,
-    height: 80,
-    // position further back
-    translate: { z: -20 },
-    stroke: 12,
-    color: "#E62",
-    fill: true
-  });
-
-  // update & render
-  illo.updateRenderGraph();
-
-  function animate() {
-    // rotate
-    if (isSpinning) {
-      illo.rotate.y += 0.03;
-    }
-    illo.updateRenderGraph();
-    requestAnimationFrame(animate);
-  }
-  animate();
-}
+import Chart from "../components/zchart";
+import Rect from "../components/rect";
 
 const Home = () => {
   return (
@@ -64,8 +16,8 @@ const Home = () => {
       {/* <Nav /> */}
 
       <div className="hero">
-        <h1 className="title">Welcome to Zdog Charts!</h1>
-        <Chart></Chart>
+        <h1 className="title">A 3D chart!</h1>
+        <Chart />
       </div>
 
       <style jsx>{`
