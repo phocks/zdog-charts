@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 import Chart from "../components/zchart";
-import Rect from "../components/rect";
 
 const Home = () => {
   return (
