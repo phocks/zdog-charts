@@ -4,7 +4,7 @@ const data = [1, 3, 5, 4, 6, 8, 5, 9, 5, 4, 5, 6, 3, 4, 3, 4, 5, 2, 3, 6, 7];
 
 const Zchart = props => {
   // rotating flag variable
-  let isSpinning = false;
+  let isSpinning = true;
   let illo;
 
   function mountZdog() {
@@ -72,11 +72,16 @@ const Zchart = props => {
       color: "#d24311"
     });
 
+    let ticker = 0;
+    let cycleCount = 150;
+
     function animate() {
-      // rotate
-      if (isSpinning) {
-        illo.rotate.y += 0.03;
-      }
+      let progress = ticker / cycleCount;
+      // apply easing to rotation
+      let tween = Zdog.easeInOut(progress % 1, 3);
+      illo.rotate.y = tween * Zdog.TAU;
+      ticker++;
+
       illo.updateRenderGraph();
       requestAnimationFrame(animate);
     }
