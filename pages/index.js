@@ -12,11 +12,9 @@ const Home = () => {
         <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
       </Head>
 
-      {/* <Nav /> */}
-
       <div className="hero">
-        <h1 className="title">A 3D chart!</h1>
-        <Chart />
+        <h1 className="title"></h1>
+        <Chart width={800} height={600} zoom={14} />
       </div>
 
       <style jsx>{`
